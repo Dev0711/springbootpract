@@ -5,9 +5,12 @@ import com.project.springpract.repository.UserRespository;
 import com.project.springpract.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.cfg.defs.UUIDDef;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -21,11 +24,12 @@ public class UserServiceImpl implements UserService {
         return saveduser;
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(UUID id) {
         log.info("Fetching user with ID: {}", id);
         User user = userRespository.findById(id).orElseThrow(()-> new RuntimeException("User not found with Id: {}"+ id));
         return user;
     }
+
 
     @Override
     public List<User> getAll() {
@@ -33,7 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Long id) {
+    public void deleteUser(UUID id) {
         if (!userRespository.existsById(id)){
             throw new RuntimeException("user not found");
         }
