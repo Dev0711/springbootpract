@@ -14,4 +14,19 @@ public class UserDTO {
 
    private String name;
 
+   private String email;
+
+   private String phoneNumber;
+
+   private String address;
+
+   private Integer age;
+   private String gender;
+   private String profilePictureUrl;
+    private String timeZone;
+    private String role;
+    private String createdAt;
+    private String updatedAt;
+
+
 }
