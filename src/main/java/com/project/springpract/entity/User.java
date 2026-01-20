@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -25,5 +27,21 @@ public class User {
     private String name;
 
     private String email;
+
+    private String password;
     private String phoneNumber;
+
+    private UserRole role;
+
+    private UserStatus userStatus;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    private List<Address> addresses;
+
+
+
+
 }
