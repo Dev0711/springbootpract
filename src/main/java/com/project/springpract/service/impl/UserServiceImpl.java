@@ -1,7 +1,10 @@
 package com.project.springpract.service.impl;
 
+import com.project.springpract.dto.UserRequest;
+import com.project.springpract.dto.UserResponse;
 import com.project.springpract.entity.User;
 import com.project.springpract.exception.UserNotFoundException;
+import com.project.springpract.mapper.UserMapper;
 import com.project.springpract.repository.UserRespository;
 import com.project.springpract.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +22,16 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     private final UserRespository userRespository;
+    private final UserMapper userMapper;
     @Override
-    public User createUser(User user){
-        User saveduser = userRespository.save(user);
-        return saveduser;
-    }
+    public UserResponse createUser(UserRequest userRequest){
+//        User saveduser = userRespository.save(user);
+//        return saveduser;
+        User user = userMapper.toUserEntity(userRequest);
+        User savedUser = userRespository.save(user);
+        log.info("User created with ID: {}", savedUser.getId());
+        return userMapper.toUserResponse(savedUser);
+    }                                                                    
 
     public User getUserById(UUID id) {
         log.info("Fetching user with ID: {}", id);

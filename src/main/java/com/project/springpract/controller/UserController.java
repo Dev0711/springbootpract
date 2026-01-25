@@ -1,7 +1,10 @@
 package com.project.springpract.controller;
 
+import com.project.springpract.dto.UserRequest;
+import com.project.springpract.dto.UserResponse;
 import com.project.springpract.entity.User;
 import com.project.springpract.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,8 +23,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User response = userService.createUser(user);
+    public ResponseEntity<UserResponse> createUser(@Valid@RequestBody UserRequest userRequest) {
+        UserResponse response = userService.createUser(userRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
