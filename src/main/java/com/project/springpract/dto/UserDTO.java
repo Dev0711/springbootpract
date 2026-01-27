@@ -1,25 +1,29 @@
 package com.project.springpract.dto;
 
-import com.project.springpract.entity.Address;
-import com.project.springpract.entity.UserRole;
-import com.project.springpract.entity.UserStatus;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
-public record UserDTO(
-        UUID id,
-        String name,
-        String email,
-        UserRole role,
-        UserStatus userStatus,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt
-) {
 
+@Data
+@NoArgsConstructor
+public class UserDTO {
+    private UUID id;
 
+    private String name;
+
+    private String email;
+
+    private String phoneNumber;
+
+    private String address;
+
+    private Integer age;
+    private String gender;
+    private String profilePictureUrl;
+    private String timeZone;
+    private String role;
+    private String createdAt;
+    private String updatedAt;
 
 }

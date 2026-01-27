@@ -1,5 +1,6 @@
 package com.project.springpract.controller;
 
+import com.project.springpract.dto.ErrorResponseDTO;
 import com.project.springpract.dto.UserRequest;
 import com.project.springpract.dto.UserResponse;
 import com.project.springpract.entity.User;
@@ -24,8 +25,10 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserResponse> createUser(@Valid@RequestBody UserRequest userRequest) {
-        UserResponse response = userService.createUser(userRequest);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        UserResponse responseDTO = userService.createUser(userRequest);
+        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
+
+
     }
 
     @GetMapping("/{id}")
