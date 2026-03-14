@@ -1,8 +1,10 @@
 package com.project.springpract.dto;
 
+import com.project.springpract.entity.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
 
 
 public record UserRequest(
@@ -16,6 +18,7 @@ public record UserRequest(
                             @NotBlank(message = "Please enter phone number")
                             @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Please enter valid phone number")
                             String phoneNumber
+
 
                           ) {
 }

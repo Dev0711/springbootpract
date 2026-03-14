@@ -20,7 +20,7 @@ import java.util.Map;
 
 @ControllerAdvice
 
-public class GlobalExecptionHandler extends ResponseEntityExceptionHandler {
+public class    GlobalExecptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
@@ -40,6 +40,11 @@ public class GlobalExecptionHandler extends ResponseEntityExceptionHandler {
         ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO("NOT_FOUND", 404, ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponseDTO);
 
+    }
+    @ExceptionHandler({UserAlreadyExistsException.class})
+    public ResponseEntity<ErrorResponseDTO> UserAlreadyExistsException(UserAlreadyExistsException ex) {
+        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO("ALREADY_EXISTS", 409, ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponseDTO);
     }
 
 

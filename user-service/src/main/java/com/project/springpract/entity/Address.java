@@ -1,5 +1,6 @@
 package com.project.springpract.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jdk.jfr.Enabled;
 
@@ -15,6 +16,7 @@ public class Address {
 
     @ManyToOne
     @JoinColumn(name = "user_id", columnDefinition = "uuid")
+    @JsonIgnore
     private User user;
 
     @Column(name = "user_id", insertable = false, updatable = false, columnDefinition = "uuid")
