@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecom_auth
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    open-in-view: false
+
+server:
+  port: 8080
+
+# JWT Configuration
+jwt:
+  secret: mySecretKeyForJWTTokenGenerationWhichShouldBeLongEnoughAndSecure
+  access-token-expiration: 3600000  # 1 hour in milliseconds
+  refresh-token-expiration: 7       # 7 days
+
+# User Service Configuration
+user-service:
+  url: http://localhost:8081
+
+# Feign Configuration
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+
+logging:
+  level:
+    com.ecommerce.authservice: DEBUG
+    org.hibernate.SQL: DEBUG
