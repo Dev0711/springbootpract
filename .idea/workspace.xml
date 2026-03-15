@@ -5,17 +5,91 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60e6c440-57e5-4b58-ba4b-0891b14f081d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/mapper/AddressMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/repository/AddressRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/UserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/UserUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/UserUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/entity/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/repository/UserRespository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/repository/UserRespository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/auth-service.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/AuthServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/client/UserServiceClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/config/FeignConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/ApiResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/AuthResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/CreateUserRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/ErrorResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/ForgotPasswordRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/RefreshTokenRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/RegisterRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/ResetPasswordRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/TokenResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/dto/UserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/entity/RefreshToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/entity/UserCredential.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/exeption/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/exeption/InvalidCredentialsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/exeption/InvalidTokenException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/exeption/TokenExpiredException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/exeption/UserAlreadyExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/repository/RefreshTokenRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/repository/UserCredentialRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/service/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/service/RefreshTokenService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/service/impl/AuthServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/service/impl/RefreshTokenServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/util/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/java/com/springprat/auth_service/util/PasswordResetTokenUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/auth-service/src/test/java/com/springprat/auth_service/AuthServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/UserServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/AddressDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/ErrorResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/UserRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/UserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/dto/UserUpdateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/entity/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/entity/AddressType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/entity/UserRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/entity/UserStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/exception/GlobalExecptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/exception/UserAlreadyExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/exception/UserNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/mapper/AddressMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/repository/AddressRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/repository/UserRespository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/security/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/security/JwtTokenProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project/springpract/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/test/java/com/project/springpract/SpringpractApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +104,7 @@
   </component>
   <component name="CopilotUserSelectedChatMode">
     <option name="chatModeId" value="Ask" />
+    <option name="inlineChatModeId" value="Ask" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -37,8 +112,8 @@
         <option value="Enum" />
         <option value="Record" />
         <option value="Exception" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,40 +150,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.SpringpractApplication.executor": "Debug",
-    "Explyt Spring.SpringpractApplication.executor": "Debug",
-    "Explyt Spring.UserServiceApplication.executor": "Debug",
-    "Maven.springpract [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "NotificationExplytEndpoints": "true",
-    "OverrideImplement.generate.javadoc": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "augment.onboarding.workspace.first.indexed.D:/springpract": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/springpract",
-    "onboarding.tips.debug.path": "D:/springpract/user-service/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.SpringpractApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Explyt Spring.SpringpractApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Explyt Spring.UserServiceApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.springpract [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;NotificationExplytEndpoints&quot;: &quot;true&quot;,
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;augment.onboarding.workspace.first.indexed.D:/springpract&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/springpract&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/springpract/user-service/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\springpract\user-service" />
     </key>
   </component>
-  <component name="RunManager" selected="Explyt Spring.SpringpractApplication">
+  <component name="RunManager" selected="Explyt Spring.UserServiceApplication">
     <configuration name="SpringpractApplication" type="Spring Boot" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project.springpract.SpringpractApplication" />
       <module name="springpract" />
@@ -133,11 +213,6 @@
     <configuration name="UserServiceApplication" type="Spring Boot" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project.springpract.UserServiceApplication" />
       <module name="springpract" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Spring Boot" factoryName="Spring Boot">
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
