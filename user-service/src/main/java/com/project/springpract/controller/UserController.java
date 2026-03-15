@@ -9,6 +9,10 @@ import com.project.springpract.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,14 +29,14 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@Valid@RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest userRequest) {
         UserResponse responseDTO = userService.createUser(userRequest);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
 
 
     }
 
-    @GetMapping( "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable UUID id) {
         User response = userService.getUserById(id);
         return ResponseEntity.ok(response);
@@ -45,9 +49,21 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable UUID id, @Valid@RequestBody UserUpdateRequest userRequest) {
+    public ResponseEntity<UserResponse> updateUser(@PathVariable UUID id, @Valid @RequestBody UserUpdateRequest userRequest) {
         UserResponse response = userService.updateUser(id, userRequest);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/paginated")
+    public ResponseEntity<Page<UserResponse>> getAllUsersPaginated(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "createdAt") String sortBy,
+            @RequestParam(defaultValue = "DESC") String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase("ASC") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        Page<UserResponse> users = userService.getAllUsersPaginated(pageable);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping
