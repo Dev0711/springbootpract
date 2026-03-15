@@ -3,6 +3,7 @@ package com.project.springpract.controller;
 import com.project.springpract.dto.ErrorResponseDTO;
 import com.project.springpract.dto.UserRequest;
 import com.project.springpract.dto.UserResponse;
+import com.project.springpract.dto.UserUpdateRequest;
 import com.project.springpract.entity.User;
 import com.project.springpract.service.UserService;
 import jakarta.validation.Valid;
@@ -35,6 +36,18 @@ public class UserController {
     public ResponseEntity<User> getUser(@PathVariable UUID id) {
         User response = userService.getUserById(id);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("email/{email}")
+    public ResponseEntity<UserResponse> getUserByEmail(@PathVariable String email) {
+        UserResponse responseDTO = userService.getUserByEmail(email);
+        return ResponseEntity.ok(responseDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable UUID id, @Valid@RequestBody UserUpdateRequest userRequest) {
+        UserResponse response = userService.updateUser(id, userRequest);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping

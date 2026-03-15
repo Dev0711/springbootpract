@@ -1,9 +1,6 @@
 package com.project.springpract.mapper;
 
-import com.project.springpract.dto.AddressDTO;
-import com.project.springpract.dto.UserDTO;
-import com.project.springpract.dto.UserRequest;
-import com.project.springpract.dto.UserResponse;
+import com.project.springpract.dto.*;
 import com.project.springpract.entity.User;
 import org.springframework.stereotype.Component;
 
@@ -42,7 +39,14 @@ public class UserMapper {
 
         );
     }
-
+    public void updateEntityFromRequest(User user, UserUpdateRequest request) {
+       if(request.name()!= null) {
+            user.setName(request.name());
+        }
+        if(request.phoneNumber()!= null) {
+            user.setPhoneNumber(request.phoneNumber());
+        }
+    }
 
 
 

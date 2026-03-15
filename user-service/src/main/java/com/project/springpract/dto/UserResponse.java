@@ -3,6 +3,7 @@ package com.project.springpract.dto;
 import com.project.springpract.entity.Address;
 import com.project.springpract.entity.UserRole;
 import com.project.springpract.entity.UserStatus;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 import java.util.UUID;
