@@ -1,5 +1,6 @@
 package com.project.springpract.service;
 
+import com.project.springpract.dto.InternalCreateUserRequest;
 import com.project.springpract.dto.UserRequest;
 import com.project.springpract.dto.UserResponse;
 import com.project.springpract.dto.UserUpdateRequest;
@@ -14,6 +15,7 @@ import java.util.UUID;
 public interface UserService {
 
     UserResponse createUser(UserRequest userRequest);
+    UserResponse createUserInternal(InternalCreateUserRequest request);
 
     User getUserById(UUID id);
     List<User> getAll();

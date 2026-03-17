@@ -3,7 +3,10 @@ package com.project.springpract.service.impl;
 import com.project.springpract.dto.UserRequest;
 import com.project.springpract.dto.UserResponse;
 import com.project.springpract.dto.UserUpdateRequest;
+import com.project.springpract.dto.InternalCreateUserRequest;
 import com.project.springpract.entity.User;
+import com.project.springpract.entity.UserRole;
+import com.project.springpract.entity.UserStatus;
 import com.project.springpract.exception.UserAlreadyExistsException;
 import com.project.springpract.exception.UserNotFoundException;
 import com.project.springpract.mapper.UserMapper;
@@ -11,7 +14,6 @@ import com.project.springpract.repository.UserRespository;
 import com.project.springpract.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.validator.cfg.defs.UUIDDef;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRespository userRespository;
     private final UserMapper userMapper;
+
     @Override
     public UserResponse createUser(UserRequest userRequest){
         if(userRespository.existsByEmail(userRequest.email())){
@@ -38,6 +41,29 @@ public class UserServiceImpl implements UserService {
         log.info("User created with ID: {}", savedUser.getId());
         return userMapper.toUserResponse(savedUser);
     }                                                                    
+
+    @Override
+    @Transactional
+    public UserResponse createUserInternal(InternalCreateUserRequest request) {
+        if(userRespository.existsByEmail(request.email())){
+            throw new UserAlreadyExistsException(request.email()+" Email Already Exists");
+        }
+        User user = new User();
+        user.setId(request.id());
+        user.setEmail(request.email());
+        user.setName(request.name());
+        user.setPhoneNumber(request.phoneNumber());
+        try {
+            user.setRole(UserRole.valueOf(request.role()));
+        } catch (Exception e) {
+            user.setRole(UserRole.CUSTOMER);
+        }
+        user.setUserStatus(UserStatus.ACTIVE);
+
+        User savedUser = userRespository.save(user);
+        log.info("Internal user created successfully with ID: {}", savedUser.getId());
+        return userMapper.toUserResponse(savedUser);
+    }
 
     public User getUserById(UUID id) {
         log.info("Fetching user with ID: {}", id);
