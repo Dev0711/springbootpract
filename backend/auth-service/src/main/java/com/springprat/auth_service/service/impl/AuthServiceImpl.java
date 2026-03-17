@@ -86,7 +86,8 @@ public class AuthServiceImpl implements AuthService {
 
         } catch (Exception e) {
             // Rollback: delete credential if user service creation fails
-            userCredentialRepository.delete(savedCredential);
+            // Use deleteById to avoid OptimisticLockingFailureException
+            userCredentialRepository.deleteById(savedCredential.getId());
             log.error("Failed to create user in User Service: {}", e.getMessage());
             throw new RuntimeException("Failed to create user. Please try again.");
         }
