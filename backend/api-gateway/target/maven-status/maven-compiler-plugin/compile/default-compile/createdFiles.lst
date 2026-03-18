@@ -1,0 +1,7 @@
+com\ecommerce\apigateway\filter\AuthenticationFilter$Config.class
+com\ecommerce\apigateway\filter\AuthenticationFilter.class
+com\ecommerce\apigateway\util\JwtUtil.class
+com\ecommerce\apigateway\controller\FallbackController.class
+com\ecommerce\apigateway\filter\LoggingFilter.class
+com\ecommerce\apigateway\handler\GlobalErrorHandler.class
+com\ecommerce\apigateway\ApiGatewayApplication.class
