@@ -21,10 +21,11 @@ import java.time.LocalDateTime;
  * JWT Authentication Filter — applied per-route on protected endpoints.
  *
  * Flow:
- *  1. Extract "Authorization: Bearer <token>" header
- *  2. Validate the JWT using JwtUtil
- *  3. If valid → add X-User-Id, X-User-Email, X-User-Role headers to upstream request
- *  4. If invalid → return 401 JSON error immediately
+ * 1. Extract "Authorization: Bearer <token>" header
+ * 2. Validate the JWT using JwtUtil
+ * 3. If valid → add X-User-Id, X-User-Email, X-User-Role headers to upstream
+ * request
+ * 4. If invalid → return 401 JSON error immediately
  */
 @Slf4j
 @Component
@@ -60,16 +61,16 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
             // 3. Extract claims and inject as upstream headers
             String userId = jwtUtil.getUserId(token);
-            String email  = jwtUtil.getEmail(token);
-            String role   = jwtUtil.getRole(token);
+            String email = jwtUtil.getEmail(token);
+            String role = jwtUtil.getRole(token);
 
             log.debug("Authenticated request — userId: {}, email: {}, role: {}", userId, email, role);
 
             // Mutate request to add user identity headers for downstream services
             ServerHttpRequest mutatedRequest = request.mutate()
-                    .header("X-User-Id",    userId != null ? userId : "")
-                    .header("X-User-Email", email  != null ? email  : "")
-                    .header("X-User-Role",  role   != null ? role   : "")
+                    .header("X-User-Id", userId != null ? userId : "")
+                    .header("X-User-Email", email != null ? email : "")
+                    .header("X-User-Role", role != null ? role : "")
                     .build();
 
             return chain.filter(exchange.mutate().request(mutatedRequest).build());
@@ -77,7 +78,8 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     }
 
     /**
-     * Writes a JSON 401 Unauthorized response without forwarding to any upstream service.
+     * Writes a JSON 401 Unauthorized response without forwarding to any upstream
+     * service.
      */
     private Mono<Void> unauthorizedResponse(ServerWebExchange exchange, String message) {
         ServerHttpResponse response = exchange.getResponse();
@@ -85,14 +87,17 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
 
         String body = String.format(
-            "{\"success\":false,\"status\":401,\"error\":\"Unauthorized\",\"message\":\"%s\",\"timestamp\":\"%s\"}",
-            message, LocalDateTime.now()
-        );
+                "{\"success\":false,\"status\":401,\"error\":\"Unauthorized\",\"message\":\"%s\",\"timestamp\":\"%s\"}",
+                message, LocalDateTime.now());
 
         var buffer = response.bufferFactory().wrap(body.getBytes());
         return response.writeWith(Mono.just(buffer));
     }
 
-    /** Configuration class required by AbstractGatewayFilterFactory (no config needed). */
-    public static class Config {}
+    /**
+     * Configuration class required by AbstractGatewayFilterFactory (no config
+     * needed).
+     */
+    public static class Config {
+    }
 }
