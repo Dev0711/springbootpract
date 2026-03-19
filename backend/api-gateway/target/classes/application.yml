@@ -2,180 +2,135 @@ spring:
   application:
     name: api-gateway
 
+  main:
+    web-application-type: reactive
+
   cloud:
     gateway:
-      server:
-        webflux:
-          # ============================================================
-          # Global CORS Configuration
-          # ============================================================
-          globalcors:
-            corsConfigurations:
-              '[/**]':
-                allowedOrigins:
-                  - "http://localhost:3000"
-                  - "http://localhost:5173"
-                  - "http://127.0.0.1:5173"
-                allowedMethods:
-                  - GET
-                  - POST
-                  - PUT
-                  - DELETE
-                  - PATCH
-                  - OPTIONS
-                allowedHeaders: "*"
-                allowCredentials: true
-                maxAge: 3600
-                exposedHeaders:
-                  - Authorization
-                  - X-User-Id
-                  - X-User-Email
-                  - X-User-Role
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "http://localhost:5173"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
 
-          routes:
+      routes:
+        # ========================================
+        # BLOCK INTERNAL ROUTES
+        # Must be FIRST to take priority
+        # ========================================
 
-            # ──────────────────────────────────────────────
-            # BLOCKED: Internal service-to-service routes
-            # Must be defined FIRST so they take priority
-            # ──────────────────────────────────────────────
-            - id: block-internal-routes
-              uri: no://op
-              predicates:
-                - Path=/api/users/internal/**
-              filters:
-                - name: SetStatus
-                  args:
-                    status: 403
+        # Block User Service internal routes
+        - id: block-user-internal
+          uri: no://op
+          predicates:
+            - Path=/api/users/internal/**
+          filters:
+            - name: SetStatus
+              args:
+                status: 403
 
-            # ──────────────────────────────────────────────
-            # AUTH SERVICE — Public Routes (no JWT required)
-            # ──────────────────────────────────────────────
-            - id: auth-register
-              uri: ${AUTH_SERVICE_URL:http://localhost:8081}
-              predicates:
-                - Path=/api/auth/register
-                - Method=POST
-              filters:
-                - name: CircuitBreaker
-                  args:
-                    name: authCircuitBreaker
-                    fallbackUri: forward:/fallback/auth
+        # Block Auth Service internal routes (if any)
+        - id: block-auth-internal
+          uri: no://op
+          predicates:
+            - Path=/api/auth/internal/**
+          filters:
+            - name: SetStatus
+              args:
+                status: 403
 
-            - id: auth-login
-              uri: ${AUTH_SERVICE_URL:http://localhost:8081}
-              predicates:
-                - Path=/api/auth/login
-                - Method=POST
-              filters:
-                - name: CircuitBreaker
-                  args:
-                    name: authCircuitBreaker
-                    fallbackUri: forward:/fallback/auth
+        # ========================================
+        # AUTH SERVICE - Public Routes
+        # ========================================
 
-            - id: auth-forgot-password
-              uri: ${AUTH_SERVICE_URL:http://localhost:8081}
-              predicates:
-                - Path=/api/auth/forgot-password
-                - Method=POST
-              filters:
-                - name: CircuitBreaker
-                  args:
-                    name: authCircuitBreaker
-                    fallbackUri: forward:/fallback/auth
+        - id: auth-register
+          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/auth/register
+            - Method=POST
 
-            - id: auth-reset-password
-              uri: ${AUTH_SERVICE_URL:http://localhost:8081}
-              predicates:
-                - Path=/api/auth/reset-password
-                - Method=POST
-              filters:
-                - name: CircuitBreaker
-                  args:
-                    name: authCircuitBreaker
-                    fallbackUri: forward:/fallback/auth
+        - id: auth-login
+          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/auth/login
+            - Method=POST
 
-            # ──────────────────────────────────────────────
-            # AUTH SERVICE — Protected Routes (JWT required)
-            # ──────────────────────────────────────────────
-            - id: auth-refresh-token
-              uri: ${AUTH_SERVICE_URL:http://localhost:8081}
-              predicates:
-                - Path=/api/auth/refresh-token
-                - Method=POST
-              filters:
-                - AuthenticationFilter
-                - name: CircuitBreaker
-                  args:
-                    name: authCircuitBreaker
-                    fallbackUri: forward:/fallback/auth
+        - id: auth-forgot-password
+          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/auth/forgot-password
+            - Method=POST
 
-            - id: auth-logout
-              uri: ${AUTH_SERVICE_URL:http://localhost:8081}
-              predicates:
-                - Path=/api/auth/logout
-                - Method=POST
-              filters:
-                - AuthenticationFilter
-                - name: CircuitBreaker
-                  args:
-                    name: authCircuitBreaker
-                    fallbackUri: forward:/fallback/auth
+        - id: auth-reset-password
+          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/auth/reset-password
+            - Method=POST
 
-            # ──────────────────────────────────────────────
-            # USER SERVICE — All routes require JWT
-            # ──────────────────────────────────────────────
-            - id: user-service-routes
-              uri: ${USER_SERVICE_URL:http://localhost:8082}
-              predicates:
-                - Path=/api/users/**
-                - Method=GET,POST,PUT,DELETE,PATCH
-              filters:
-                - AuthenticationFilter
-                - name: CircuitBreaker
-                  args:
-                    name: userCircuitBreaker
-                    fallbackUri: forward:/fallback/user
+        # ========================================
+        # AUTH SERVICE - Protected Routes
+        # ========================================
 
-# ============================================================
-# Server configuration
-# ============================================================
+        - id: auth-refresh-token
+          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/auth/refresh-token
+            - Method=POST
+          filters:
+            - AuthenticationFilter
+
+        - id: auth-logout
+          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/auth/logout
+            - Method=POST
+          filters:
+            - AuthenticationFilter
+
+        # ========================================
+        # USER SERVICE - All Routes (Protected)
+        # ========================================
+
+        - id: user-service
+          uri: ${USER_SERVICE_URL:http://localhost:8082}
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - AuthenticationFilter
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+
+
+
+
+
+
+
+# Server
 server:
   port: ${PORT:8080}
 
-# ============================================================
-# JWT configuration
-# ============================================================
+# JWT
 jwt:
   secret: ${JWT_SECRET:mySecretKeyForJWTTokenGenerationWhichShouldBeLongEnoughAndSecure}
 
-# ============================================================
-# Resilience4j circuit breaker configuration
-# ============================================================
-resilience4j:
-  circuitbreaker:
-    instances:
-      authCircuitBreaker:
-        sliding-window-size: 10
-        permitted-number-of-calls-in-half-open-state: 3
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 10s
-        automatic-transition-from-open-to-half-open-enabled: true
-      userCircuitBreaker:
-        sliding-window-size: 10
-        permitted-number-of-calls-in-half-open-state: 3
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 10s
-        automatic-transition-from-open-to-half-open-enabled: true
-  timelimiter:
-    instances:
-      authCircuitBreaker:
-        timeout-duration: 5s
-      userCircuitBreaker:
-        timeout-duration: 5s
-
-# ============================================================
-# Actuator endpoints
-# ============================================================
+# Actuator
 management:
   endpoints:
     web:
@@ -184,14 +139,9 @@ management:
   endpoint:
     health:
       show-details: always
-    gateway:
-      access: read-only
 
-# ============================================================
 # Logging
-# ============================================================
 logging:
   level:
     com.ecommerce.apigateway: DEBUG
     org.springframework.cloud.gateway: INFO
-    reactor.netty: INFO

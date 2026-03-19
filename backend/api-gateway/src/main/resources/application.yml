@@ -7,7 +7,6 @@ spring:
 
   cloud:
     gateway:
-      # CORS Configuration
       globalcors:
         cors-configurations:
           '[/**]':
@@ -24,19 +23,36 @@ spring:
             allowedHeaders: "*"
             allowCredentials: true
 
-      # Routes
       routes:
-        # Block internal APIs
-        - id: block-internal
+        # ========================================
+        # BLOCK INTERNAL ROUTES
+        # Must be FIRST to take priority
+        # ========================================
+
+        # Block User Service internal routes
+        - id: block-user-internal
           uri: no://op
           predicates:
-            - Path=/**/internal/**
+            - Path=/api/users/internal/**
           filters:
             - name: SetStatus
               args:
                 status: 403
 
-        # Auth - Public Routes
+        # Block Auth Service internal routes (if any)
+        - id: block-auth-internal
+          uri: no://op
+          predicates:
+            - Path=/api/auth/internal/**
+          filters:
+            - name: SetStatus
+              args:
+                status: 403
+
+        # ========================================
+        # AUTH SERVICE - Public Routes
+        # ========================================
+
         - id: auth-register
           uri: ${AUTH_SERVICE_URL:http://localhost:8081}
           predicates:
@@ -61,7 +77,10 @@ spring:
             - Path=/api/auth/reset-password
             - Method=POST
 
-        # Auth - Protected Routes
+        # ========================================
+        # AUTH SERVICE - Protected Routes
+        # ========================================
+
         - id: auth-refresh-token
           uri: ${AUTH_SERVICE_URL:http://localhost:8081}
           predicates:
@@ -78,13 +97,30 @@ spring:
           filters:
             - AuthenticationFilter
 
-        # User Service - All Routes (Protected)
+        # ========================================
+        # USER SERVICE - All Routes (Protected)
+        # ========================================
+
         - id: user-service
           uri: ${USER_SERVICE_URL:http://localhost:8082}
           predicates:
             - Path=/api/users/**
           filters:
             - AuthenticationFilter
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+
+
+
+
+
+
 
 # Server
 server:

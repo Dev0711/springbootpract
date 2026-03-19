@@ -1,7 +1,7 @@
-D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\ApiGatewayApplication.java
-D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\config\CorsConfig.java
 D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\controller\FallbackController.java
+D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\config\CorsConfig.java
 D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\filter\AuthenticationFilter.java
+D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\ApiGatewayApplication.java
 D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\filter\LoggingFilter.java
 D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\handler\GlobalErrorHandler.java
 D:\springpract\backend\api-gateway\src\main\java\com\ecommerce\apigateway\util\JwtUtil.java

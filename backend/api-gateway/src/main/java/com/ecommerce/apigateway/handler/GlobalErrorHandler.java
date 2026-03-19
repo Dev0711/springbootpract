@@ -3,7 +3,7 @@ package com.ecommerce.apigateway.handler;
 import lombok.extern.slf4j.Slf4j;
 
 
-import org.springframework.boot.webflux.error.ErrorWebExceptionHandler;
+import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
